@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 Pics 1 Word Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #images {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    #images img {
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+    }
+    .input-container {
+      margin-top: 20px;
+    }
+    .input-container input {
+      padding: 10px;
+      font-size: 18px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #winPopup, #losePopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      border-radius: 10px;
+    }
+    #winPopup {
+      background-color: #28a745;
+    }
+    #losePopup {
+      background-color: #dc3545;
+    }
+    .popup-button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>4 Pics 1 Word</h1>
+  <div id="images">
+    <img src="https://i.pinimg.com/736x/bf/6c/6f/bf6c6f316406ff7ac2c768681ab83127.jpg" alt="Image 1">
+    <img src="https://th.bing.com/th/id/OIP.B-AkpnSrzXqI9DL4emDREwHaLG?rs=1&pid=ImgDetMain" alt="Image 2">
+    <img src="https://i.pinimg.com/736x/a5/d6/9d/a5d69d35256e36c3d47db51d4b050154.jpg" alt="Image 3">
+    <img src="https://www.lionheartv.net/wp-content/uploads/2022/10/Andrea-Torres-561x842.jpg" alt="Image 4">
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="userInput" placeholder="Enter your guess">
+  </div>
+  
+  <button class="button" onclick="checkAnswer()">Submit Guess</button>
+
+  <!-- Win Popup -->
+  <div id="winPopup">
+    <h2>You Win! hint: Dalawang officers lang siguro na isip mo no? Sino kaya?</h2>
+    <button class="popup-button" onclick="resetGame()">Play Again</button>
+  </div>
+
+  <!-- Lose Popup -->
+  <div id="losePopup">
+    <h2>Incorrect! hint: Famous characters from?</h2>
+    <button class="popup-button" onclick="resetGame()">Try Again</button>
+  </div>
+
+  <script>
+    // Game data
+    const correctWord = "noli me tangere";
+    
+    // Function to check user's guess
+    function checkAnswer() {
+      const userInput = document.getElementById("userInput").value.toLowerCase();
+      
+      if (userInput === correctWord) {
+        showWinPopup();
+      } else {
+        showLosePopup();
+      }
+    }
+
+    // Function to display the win popup
+    function showWinPopup() {
+      document.getElementById("winPopup").style.display = "block";
+    }
+
+    // Function to display the lose popup
+    function showLosePopup() {
+      document.getElementById("losePopup").style.display = "block";
+    }
+
+    // Function to reset the game
+    function resetGame() {
+      document.getElementById("userInput").value = "";
+      document.getElementById("winPopup").style.display = "none";
+      document.getElementById("losePopup").style.display = "none";
+    }
+  </script>
+  
+</body>
+</html>
